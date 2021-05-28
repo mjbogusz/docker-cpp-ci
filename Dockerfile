@@ -2,9 +2,9 @@ FROM ubuntu:focal
 
 ENV DEBIAN_FRONTEND="noninteractive"
 
-# Install custom uncrustify (Bionic comes with 0.69 which is ancient)
-ADD pkgs/uncrustify_0.72.0-1_bionic_amd64.deb /
-RUN dpkg -i uncrustify_0.72.0-1_bionic_amd64.deb
+# Install custom uncrustify (Focal comes with 0.69 which is ancient)
+ADD pkgs/uncrustify_0.72.0-1_focal_amd64.deb /
+RUN dpkg -i uncrustify_0.72.0-1_focal_amd64.deb
 
 # Install all other packages
 # Note the ARG here: use with `--build-arg NO_APT_CACHE=$(date +%s)` to force Docker to skip the cached layers
@@ -17,16 +17,24 @@ RUN apt update -qy \
 		ca-certificates \
 		clang-format \
 		clang-tidy \
+		cmake \
 		cppcheck \
 		curl \
+		debhelper \
 		dirmngr \
+		doxygen \
 		dpkg-dev \
+		fakeroot \
 		file \
 		g++ \
 		gcc \
+		gcovr \
 		git \
 		gnupg \
+		graphviz \
 		imagemagick \
+		lcov \
+		libboost-system-dev \
 		libbz2-dev \
 		libc6-dev \
 		libcurl4-openssl-dev \
@@ -60,6 +68,7 @@ RUN apt update -qy \
 		openssh-client \
 		patch \
 		procps \
+		software-properties-common \
 		subversion \
 		unzip \
 		wget \
